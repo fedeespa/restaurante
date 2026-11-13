@@ -1,0 +1,66 @@
+{%extends "./base.html" %}
+{% block title %}Gestion Reservas{% endblock %}
+{%block body%}
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <h2>Gestion de Reservas</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/registrarReserva/" method="POST">{%csrf_token%}
+         <div class="form-group">
+                        <input type="text" id="txtcodigo" name="txtcodigo" value="{{reserva.codigo}}" class="form-control" 
+                        placeholder="Codigo"  maxlength="6" required >
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombre" name="txtnombre" value="{{reserva.nombre}}" class="form-control" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="txtfecha" name="txtfecha" value="{{reserva.fecha}}" class="form-control" placeholder="Fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="integer" id="txthora" name="txthora" value="{{reserva.hora}}" class="form-control" placeholder="Hora" required>
+                    </div>    
+                    <div class="form-group">
+                        <input type="number" id="txtpersonas" name="txtpersonas" value="{{reserva.personas}}" class="form-control" placeholder="Personas" required>
+                    </div>    
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Cargar Reserva</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+        <h1>
+            Listado de Reservas
+        </h1>
+        <div class="table-responsive py-2">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Nombre</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Personas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for r in reservas%}
+                    <tr>
+                        <td>{{r.codigo}}</td>
+                        <td>{{r.nombre}}</td>
+                        <td>{{r.fecha}}</td>
+                        <td>{{r.hora}}</td>
+                        <td>{{r.personas}}</td>
+                        <td><a href="edicionReserva/{{r.codigo}}"class="btn btn-info">Editar</a></td>
+                        <td><a href="borrarReserva/{{r.codigo}}"class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>
+{%endblock%}    
