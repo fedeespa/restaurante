@@ -9,3 +9,9 @@ class Reservas(models.Model):
     personas=models.IntegerField()
     def __str__(self):
         return self.codigo+" "+self.nombre+" "+str(self.fecha)+" "+str(self.hora)+" "+str(self.personas)
+
+class Usuarios(models.Model):
+    nombre=models.CharField(primary_key=True,max_length=10)
+    clave=models.CharField(max_length=20)
+    def __str__(self):
+        return self.nombre
