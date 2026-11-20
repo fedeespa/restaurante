@@ -7,5 +7,7 @@ urlpatterns=[
     path('borrarReserva/<codigo>',views.borrarReserva),
     path('editarReserva/',views.editarReserva),
     path('loguearse/',views.chequearUsuarios),
-    path('inicio/',views.home)
+    path('inicio/',views.home),
+    path('registrarse/',views.registrarse),
+    path('registro/',views.registro)
 ]

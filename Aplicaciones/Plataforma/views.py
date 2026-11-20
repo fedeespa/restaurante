@@ -44,3 +44,17 @@ def chequearUsuarios(request):
         return redirect('/inicio')
     except:
         return redirect('/')
+
+def registrarse(request):
+    return render(request,"registrarse.html")
+
+def registro(request):
+    flag=False
+    nombre=request.POST['nombre']
+    contra=request.POST['contra']
+    try:
+        usuarioNuevo=Usuarios.objects.create(nombre=nombre,clave=contra)
+        return redirect('/')
+    except:
+        flag=True
+        return render(request,"registrarse.html",{"flag":flag})

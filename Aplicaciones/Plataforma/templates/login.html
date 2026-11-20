@@ -22,8 +22,14 @@
                         <button type="submit" class="btn btn-success btn-block text-white">Ingresar</button>
                     </div>
                 {% load static %}
-                <img src="{% static 'imagen1.png' %}" class="img-fluid" alt="Logo">
+                
                 </form>
+                <form action="registrarse/" method="POST">{%csrf_token%}
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-danger btn-block text-white">Registrarse</button>
+                    </div>
+                </form>
+                <img src="{% static 'imagen1.png' %}" class="img-fluid" alt="Logo">
             </div>
         </div>
     </div>
